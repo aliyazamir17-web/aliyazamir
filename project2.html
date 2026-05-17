@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flower Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#fff7fa;
+      color:#222;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    .header{
+      width:100%;
+      min-height:100vh;
+      background:linear-gradient(to right,#ffd9e5,#ffc4d7);
+      padding:20px 8%;
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:70px;
+    }
+
+    .logo{
+      font-size:42px;
+      font-weight:700;
+      color:#222;
+    }
+
+    .logo span{
+      color:#ff2e74;
+    }
+
+    nav ul{
+      display:flex;
+      gap:35px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:#222;
+      font-size:18px;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#ff2e74;
+    }
+
+    .icons{
+      display:flex;
+      gap:20px;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .hero-text h4{
+      color:#ff2e74;
+      font-size:30px;
+      margin-bottom:10px;
+    }
+
+    .hero-text h1{
+      font-size:75px;
+      line-height:90px;
+      margin-bottom:10px;
+    }
+
+    .hero-text h2{
+      font-size:65px;
+      font-family:'Great Vibes',cursive;
+      color:#ff2e74;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      font-size:20px;
+      line-height:35px;
+      color:#555;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:#ff2e74;
+      color:#fff;
+      text-decoration:none;
+      border-radius:40px;
+      font-size:18px;
+      transition:0.3s;
+      box-shadow:0 10px 20px rgba(255,46,116,0.3);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#e91e63;
+    }
+
+    .hero-image{
+      flex:1;
+      text-align:center;
+    }
+
+    .hero-image img{
+      width:100%;
+      max-width:650px;
+      filter:drop-shadow(0 20px 25px rgba(0,0,0,0.2));
+      border-radius:20px;
+    }
+
+    section{
+      padding:80px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:50px;
+    }
+
+    .section-title span{
+      color:#ff2e74;
+    }
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+      transition:0.4s;
+      position:relative;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .discount{
+      position:absolute;
+      top:15px;
+      left:15px;
+      background:#ff2e74;
+      color:#fff;
+      padding:7px 14px;
+      border-radius:20px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .card img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .stars{
+      color:#ff2e74;
+      margin-bottom:10px;
+    }
+
+    .price{
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .price span{
+      text-decoration:line-through;
+      font-size:18px;
+      color:#999;
+      margin-left:10px;
+    }
+
+    .cart-btn{
+      width:100%;
+      padding:13px;
+      border:none;
+      border-radius:10px;
+      background:#ff2e74;
+      color:#fff;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .cart-btn:hover{
+      background:#e91e63;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .feature-box{
+      background:#fff;
+      padding:35px 25px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .feature-box h3{
+      margin:15px 0;
+      font-size:25px;
+    }
+
+    .feature-box p{
+      color:#666;
+      line-height:28px;
+    }
+
+    .about{
+      display:flex;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .about img{
+      width:100%;
+      max-width:500px;
+      border-radius:20px;
+    }
+
+    .about-text{
+      flex:1;
+    }
+
+    .about-text h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      font-size:18px;
+      line-height:35px;
+      color:#555;
+      margin-bottom:20px;
+    }
+
+    .reviews{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .review-card{
+      background:#fff;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .review-card p{
+      line-height:30px;
+      color:#555;
+      margin:20px 0;
+    }
+
+    .review-card h4{
+      color:#ff2e74;
+      font-size:22px;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .contact form{
+      background:#fff;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .contact form input,
+    .contact form textarea{
+      width:100%;
+      padding:15px;
+      margin-bottom:20px;
+      border:1px solid #ddd;
+      border-radius:10px;
+      outline:none;
+      font-size:16px;
+    }
+
+    .contact form button{
+      border:none;
+    }
+
+    footer{
+      background:#1c1c1c;
+      color:#fff;
+      padding:70px 8% 30px;
+    }
+
+    .footer-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:40px;
+      margin-bottom:40px;
+    }
+
+    .footer-box h3{
+      font-size:28px;
+      margin-bottom:20px;
+      color:#ff5d96;
+    }
+
+    .footer-box p,
+    .footer-box a{
+      color:#ddd;
+      text-decoration:none;
+      line-height:35px;
+      display:block;
+    }
+
+    .footer-box a:hover{
+      color:#ff5d96;
+    }
+
+    .footer-bottom{
+      text-align:center;
+      border-top:1px solid #444;
+      padding-top:25px;
+      color:#bbb;
+    }
+
+    @media(max-width:900px){
+      .hero-text h1{
+        font-size:55px;
+        line-height:70px;
+      }
+
+      .hero-text h2{
+        font-size:45px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+    }
+
+    @media(max-width:600px){
+      .hero-text h1{
+        font-size:42px;
+        line-height:55px;
+      }
+
+      .hero-text h2{
+        font-size:38px;
+      }
+
+      .section-title h2,
+      .about-text h2{
+        font-size:38px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="home">
+    <nav>
+      <div class="logo">Flower<span>.</span></div>
+
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="PageOne.html">Products</a></li>
+        <li><a href="pagetwo.html">About</a></li>
+        <li><a href="page3.html">Reviews</a></li>
+        <li><a href="page4.html">Contact</a></li>
+      </ul>
+
+      <div class="icons">
+        ❤ 🛒 👤
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h4>Fresh & Natural</h4>
+        <h1>Beautiful Flowers</h1>
+        <h2>For Every Occasion</h2>
+        <p>
+          We provide fresh and beautiful flowers with love.
+          Make every moment special with our premium flower collection.
+        </p>
+        <a href="#products" class="btn">Shop Now →</a>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop" alt="Flowers">
+      </div>
+    </div>
+  </header>
+
+  <section id="products">
+    <div class="section-title">
+      <h2>Our <span>Best Sellers</span></h2>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <div class="discount">-10%</div>
+        <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1000&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Pink Rose Bouquet</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$24.99 <span>$29.99</span></div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="discount">-15%</div>
+        <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?q=80&w=1000&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Pink Tulips</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$19.99 <span>$23.99</span></div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://gulmahal.in/wp-content/uploads/2024/12/Pink-Asiatic-Lilies-held-in-hands.webp">
+        <div class="card-content">
+          <h3>Pink Lily Box</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$29.99</div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="discount">-20%</div>
+        <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1000&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Carnation Bouquet</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$18.99 <span>$23.99</span></div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.uaeflowers.com/uploads/product/uaeflowers/MAR2026/4WhitePhalaenopsisOrchid-1772447962151.webp">
+        <div class="card-content">
+          <h3>Orchid Plant</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$34.99</div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="discount">-12%</div>
+        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1000&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Luxury Roses Box</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$26.99 <span>$30.99</span></div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?q=80&w=1000&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Sunflower Basket</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$21.99</div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="discount">-25%</div>
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1000&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>White Daisy Vase</h3>
+          <div class="stars">★★★★★</div>
+          <div class="price">$17.99 <span>$24.99</span></div>
+          <button class="cart-btn">Add To Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="features">
+      <div class="feature-box">
+        <h3>🚚 Free Shipping</h3>
+        <p>Free delivery on all flower orders above $50.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>💳 Secure Payment</h3>
+        <p>100% secure and trusted payment methods.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🎧 24/7 Support</h3>
+        <p>Dedicated support team available all the time.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🌸 Fresh Flowers</h3>
+        <p>Premium quality fresh flowers directly from farms.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="about-text">
+        <h2>About Our Flower Shop</h2>
+        <p>
+          We are passionate about delivering happiness through flowers.
+          Our flower arrangements are designed with love and care for birthdays,
+          weddings, anniversaries and all special moments.
+        </p>
+
+        <p>
+          We provide fresh flowers daily and beautiful custom bouquets at affordable prices.
+          Your satisfaction is always our priority.
+        </p>
+
+        <a href="#contact" class="btn">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-title">
+      <h2>Customer <span>Reviews</span></h2>
+    </div>
+
+    <div class="reviews">
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          Amazing flower quality and very fast delivery.
+          The bouquet looked exactly like the pictures.
+        </p>
+        <h4>Sarah Khan</h4>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          Beautiful packaging and fresh flowers.
+          I ordered for my friend and she loved it.
+        </p>
+        <h4>Ali Ahmed</h4>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          Best online flower shop website design.
+          Easy ordering process and excellent support.
+        </p>
+        <h4>Zara Noor</h4>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">
+      <h2>Contact <span>Us</span></h2>
+    </div>
+
+    <div class="contact">
+      <div>
+        <h2 style="font-size:45px;margin-bottom:20px;">Get In Touch</h2>
+        <p style="font-size:18px;line-height:35px;color:#555;">
+          Have questions or want a custom bouquet?
+          Contact us anytime and we will help you.
+        </p>
+      </div>
+
+      <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <input type="text" placeholder="Subject">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+
+      <div class="footer-box">
+        <h3>Flower Shop</h3>
+        <p>
+          Beautiful flowers for every occasion.
+          Fresh bouquets with love and happiness.
+        </p>
+      </div>
+
+      <div class="footer-box">
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-box">
+        <h3>Extra Links</h3>
+        <a href="#">My Account</a>
+        <a href="#">My Orders</a>
+        <a href="#">Wishlist</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+
+      <div class="footer-box">
+        <h3>Contact Info</h3>
+        <p>📞 +92 300 1234567</p>
+        <p>📧 flowershop@gmail.com</p>
+        <p>📍 Karachi, Pakistan</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Flower Shop | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
